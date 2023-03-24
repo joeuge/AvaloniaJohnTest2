@@ -39,18 +39,10 @@
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.0-preview6" />
     <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.0-preview6" />
     <PackageReference Include="Avalonia.Xaml.Interactivity" Version="11.0.0-preview6" />
-    <PackageReference Include="Dapper" Version="2.0.123" />
-    <PackageReference Include="DynamicData" Version="7.13.1" />
-    <PackageReference Include="Egorozh.ColorPicker.Avalonia.Dialog" Version="11.0.0-preview1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Npgsql" Version="7.0.1" />
     <PackageReference Include="Npgsql.NodaTime" Version="7.0.1" />
-    <PackageReference Include="ReactiveMarbles.Mvvm" Version="1.0.46" />
-    <PackageReference Include="ReactiveMarbles.ObservableEvents.SourceGenerator" Version="1.2.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="ReactiveUI" Version="18.4.26" />
     <PackageReference Include="ReactiveUI.Fody" Version="18.4.26" />
     <PackageReference Include="ReactiveUI.Validation" Version="3.0.22" />
