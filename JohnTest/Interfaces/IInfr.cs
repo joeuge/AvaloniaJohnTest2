@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Net;
 using System.Xml.Linq;
-using AutoMapper;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
