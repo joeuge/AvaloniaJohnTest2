@@ -101,7 +101,7 @@ public class Shell : Screen, IShellInternal
     var modalService = IoC.Get<IGlobalModalService>();
 
     string text = null;
-    await modalService.TryPromptAsync(result => text = result, content: "Ваше имя, сестра", okButtonContent: null, defaultValue: "Milady");
+    await modalService.TryPromptAsync(result => text = result, content: "Some text", okButtonContent: null, defaultValue: "John");
 
     if (text != null)
     {
