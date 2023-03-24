@@ -17,7 +17,6 @@ using Avalonia.ReactiveUI;
 using Iface.Utils;
 using Iface.Utils.Avalonia;
 using Microsoft.Extensions.DependencyInjection;
-using Npgsql;
 using ReactiveUI;
 using Splat;
 using Splat.Microsoft.Extensions.DependencyInjection;
