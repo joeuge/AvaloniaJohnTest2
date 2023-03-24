@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Caliburn.Micro;
 using AppNs.Interfaces;
+using AppNs.UiBlocks.ContextMenuNs;
 using Iface.Utils;
 using Iface.Utils.Avalonia;
 

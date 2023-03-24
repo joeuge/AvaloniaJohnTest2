@@ -16,6 +16,9 @@ namespace AppNs.UiBlocks.Shell;
 
 internal class Workspace : Conductor<IPage>, IWorkspaceInternal
 {
+  public List<CommandItem> TmpMenuItems { get; set; }
+
+
   public EventHandlerCollection<IPage, object> BedChangedEvent { get; } = new EventHandlerCollection<IPage, object>();
 
   protected IInfrastructure Infr { get; private set; }
@@ -307,6 +310,31 @@ internal class Workspace : Conductor<IPage>, IWorkspaceInternal
     }
 
     await ActivateItemAsync(bed); // не гарантирует смену ActiveItem! // Справка: События поднимаются в ChangeActiveItem()
+
+    // tmp
+    var holder = TryGetWorkspaceHolder();
+    if (holder == null) return;
+
+    var menuItems = new List<CommandItem>();
+    if (holder.OwnerType == WorkspaceOwnerType.ShellTabs)
+    {
+      menuItems.Add(new CommandItem
+      {
+        DisplayName = "Move to new Window",
+        Command = new SimpleCommand(p => { Infr.Shell.ToggleWorkspaceHolder(holder); }),
+      });
+    }
+    else
+    {
+      menuItems.Add(new CommandItem
+      {
+        DisplayName = "Move to TabItem",
+        Command = new SimpleCommand(p => { Infr.Shell.ToggleWorkspaceHolder(holder); }),
+      });
+    }
+
+    TmpMenuItems = menuItems;
+    NotifyOfPropertyChange(()=>TmpMenuItems);
   }
 
 

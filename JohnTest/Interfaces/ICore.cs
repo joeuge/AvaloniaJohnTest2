@@ -173,6 +173,8 @@ internal interface IWorkspaceInternal : IWorkspace
 //==============================================
 public interface IWorkspace : IScreen
 {
+  List<CommandItem> TmpMenuItems { get; set; }
+
   #region Parent info
   object Parent { get; }
   WorkspaceOwnerType OwnerType { get; }

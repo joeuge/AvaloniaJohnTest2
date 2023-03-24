@@ -27,6 +27,7 @@ namespace AppNs.UiBlocks.Shell
     }
 
 
+    /*
     private void MainContextMenu_OnContextMenuOpening(object? sender, CancelEventArgs e)
     {
       var context = new CollectorContext(_viewModel.TryGetWorkspaceHolder(), null, new Point());
@@ -45,5 +46,6 @@ namespace AppNs.UiBlocks.Shell
       MainContextMenu.Items = list;
       //-------------------------------
     }
+    */
   }
 }

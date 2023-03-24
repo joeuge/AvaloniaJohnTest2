@@ -15,8 +15,19 @@
   <Grid x:Name="RootGrid" Background="Transparent">
 
     <Grid.ContextMenu>
-      <iface:ContextMenuEx x:Name="MainContextMenu"
-                   ContextMenuOpening="MainContextMenu_OnContextMenuOpening"/>
+      <ContextMenu Items="{Binding TmpMenuItems}">
+        <!--
+        x:Name="MainContextMenu"
+        ContextMenuOpening="MainContextMenu_OnContextMenuOpening"
+        -->
+        <ContextMenu.Styles>
+          <Style Selector="MenuItem" x:DataType="iface:CommandItem">
+            <Setter Property="Header" Value="{Binding DisplayName}"/>
+            <Setter Property="Command" Value="{Binding Command}"/>
+            <Setter Property="CommandParameter" Value="{Binding CommandParameter}"/>
+          </Style>
+        </ContextMenu.Styles>
+      </ContextMenu>
 
     </Grid.ContextMenu>
 
