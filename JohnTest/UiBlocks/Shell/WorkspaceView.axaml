@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:iface="http://schemas.iface.ru/clientframework"
+             xmlns:shell="clr-namespace:AppNs.UiBlocks.Shell"
+             xmlns:micro="http://schemas.iface.ru/micro"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:DataType="shell:Workspace"
+             x:CompileBindings="True"
+             x:Class="AppNs.UiBlocks.Shell.WorkspaceView">
+  <!-- 
+  -->
+
+  <Grid x:Name="RootGrid" Background="Transparent">
+
+    <Grid.ContextMenu>
+      <iface:ContextMenuEx x:Name="MainContextMenu"
+                   ContextMenuOpening="MainContextMenu_OnContextMenuOpening"/>
+
+    </Grid.ContextMenu>
+
+    <!-- Main Layout -->
+
+    <Grid>
+
+      <!-- Main Grid: Bed + Overlays -->
+
+      <Grid x:Name="MainGrid"
+            Background="Transparent">
+
+        <Grid>
+          <!-- Bed -->
+          <ContentControl micro:View.Context="{Binding Bed.ViewContext}" micro:View.Model="{Binding Bed}"/>
+
+        </Grid>
+
+      </Grid>
+
+    </Grid>
+
+  </Grid>
+</UserControl>

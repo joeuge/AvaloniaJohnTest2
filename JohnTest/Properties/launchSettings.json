@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "OikModelEditor": {
+      "commandName": "Project",
+      "commandLineArgs": "/john /p1 2605"
+    }
+  }
+}

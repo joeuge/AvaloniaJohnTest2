@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dialogs1="clr-namespace:AppNs.UiContent.Dialogs"
+             xmlns:micro="http://schemas.iface.ru/micro"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             MinWidth="300"
+             x:DataType="dialogs1:AlertDialog"
+             x:CompileBindings="True"
+             x:Class="AppNs.UiContent.Dialogs.AlertDialogView">
+  <!--
+  -->
+  <StackPanel Margin="16,8,16,8">
+    <TextBlock Text="{Binding Content}"
+               MaxWidth="400"
+               TextWrapping="Wrap"
+               HorizontalAlignment="Left"/>
+
+    <StackPanel Orientation="Horizontal"
+                HorizontalAlignment="Right"
+                Margin="0,32,0,0">
+
+      <Button IsDefault="True"
+                         micro:Message.Attach="DoOkAsync"
+                         Content="{Binding OkButtonContent}"
+                         Margin="8,0,0,0" />
+
+      <Button 
+              micro:Message.Attach="DoTest2"
+              Content="DoTest2"
+              Margin="8,0,0,0" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

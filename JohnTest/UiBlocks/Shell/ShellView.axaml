@@ -1,0 +1,70 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:micro="http://schemas.iface.ru/micro"
+             xmlns:local="clr-namespace:AppNs.UiBlocks.Shell"
+             xmlns:iface="http://schemas.iface.ru/clientframework"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             KeyDown="OnKeyDown"
+             x:Class="AppNs.UiBlocks.Shell.ShellView"
+             >
+  <!--
+             x:DataType="local:ShellVm"
+             x:CompileBindings="True"
+  -->
+  <Design.DataContext>
+    <local:Shell/>
+  </Design.DataContext>
+
+  <DockPanel Name="RootElement">
+    <Grid DockPanel.Dock="Top" Name="TopGrid">
+      <!-- Top Buttons -->
+      <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+        <Button Content="New Page" Command="{Binding NewPageCommand}" Margin="0 0 50 0"  />
+        <Button Content="Input String" Command="{Binding InputStringCommand}"/>
+        <Button Content="Show Dialog" Command="{Binding ShowDialogCommand}"/>
+      </StackPanel>
+    </Grid>
+
+    <!-- SplitLayout + Side Panel + Plus Button -->
+    <Grid Name="MainPanelElement">
+
+      <!-- SplitLayout = Tab Control + Split Panel -->
+      <Grid x:Name="SplitLayoutElement">
+
+        <!-- Tab Control -->
+        <Grid x:Name="TabsPanelElement">
+          <Border BorderThickness="0,1,0,0">
+            <TabControl x:Name="TabControlElement" 
+                        Items="{Binding TabItems}"
+                        SelectedItem="{Binding CurrentTabWorkspaceHolder, Mode=TwoWay}"
+                        PointerReleased="TabControlElement_OnPointerReleased"
+                        >
+              <TabControl.ItemTemplate>
+                <DataTemplate DataType="local:WorkspaceHolder">
+                  <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Workspace.DisplayName}" FontSize="14" VerticalAlignment="Center"/>
+                  </StackPanel>
+                </DataTemplate>
+              </TabControl.ItemTemplate>
+
+              <TabControl.ContentTemplate>
+                <DataTemplate DataType="local:WorkspaceHolder">
+                  <Grid>
+                    <ContentControl micro:View.Model="{Binding}" IsTabStop="False" />
+                  </Grid>
+                </DataTemplate>
+              </TabControl.ContentTemplate>
+            </TabControl>
+          </Border>
+        </Grid>
+
+      </Grid>
+
+    </Grid>
+
+  </DockPanel>
+  <!--
+-->
+</UserControl>

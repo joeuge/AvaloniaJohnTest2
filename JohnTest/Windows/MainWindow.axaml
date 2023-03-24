@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:windows="clr-namespace:AppNs.Windows"
+        xmlns:micro="http://schemas.iface.ru/micro"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Height="300" Width="600"
+        x:DataType="windows:MainWindowVm"
+        x:CompileBindings="True"
+        PointerReleased="OnPointerReleased"
+        x:Class="AppNs.Windows.MainWindow"
+        Title="MainWindow">
+  <!--
+        x:DataType="local:MainWindowVm"
+        x:CompileBindings="True"
+  -->
+  <!--
+  <Design.DataContext>
+    <local:MainWindowVm/>
+  </Design.DataContext>
+  -->
+
+  <Grid>
+    <Border BorderThickness="0,1,0,0" >
+      <ContentControl micro:View.Model="{Binding Shell}" />
+    </Border>
+  </Grid>
+</Window>
