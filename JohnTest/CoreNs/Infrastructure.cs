@@ -819,7 +819,8 @@ public class Infrastructure : PropertyChangedBase, IInfrastructureInternal
       context.ContainerItems.Add(new CommandItem
       {
         DisplayName = "Move to new Window",
-        Command = new SimpleCommand(p => { Shell.ToggleWorkspaceHolder(workspaceHolder); }),
+        Command = ReactiveCommand.CreateFromTask<IWorkspaceHolder>(ToggleWorkspaceHolder, null, RxApp.MainThreadScheduler),
+        CommandParameter = workspaceHolder
       });
     }
 
@@ -828,7 +829,8 @@ public class Infrastructure : PropertyChangedBase, IInfrastructureInternal
       context.ContainerItems.Add(new CommandItem
       {
         DisplayName = "Move to TabItem",
-        Command = new SimpleCommand(p => { Shell.ToggleWorkspaceHolder(workspaceHolder); }),
+        Command = ReactiveCommand.CreateFromTask<IWorkspaceHolder>(ToggleWorkspaceHolder, null, RxApp.MainThreadScheduler),
+        CommandParameter = workspaceHolder
       });
     }
 
@@ -840,6 +842,10 @@ public class Infrastructure : PropertyChangedBase, IInfrastructureInternal
     }
   }
 
+  private async Task ToggleWorkspaceHolder(IWorkspaceHolder holder)
+  {
+    await Shell.ToggleWorkspaceHolder(holder);
+  }
 
   #endregion
 
