@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.ComponentModel;
+using System.Reactive;
 using System.Windows.Input;
 using System.Xml.Linq;
 using Caliburn.Micro;
@@ -7,6 +8,7 @@ using AppNs.Interfaces;
 using AppNs.UiBlocks.ContextMenuNs;
 using Iface.Utils;
 using Iface.Utils.Avalonia;
+using ReactiveUI;
 
 namespace AppNs.UiBlocks.Shell;
 
@@ -16,7 +18,7 @@ namespace AppNs.UiBlocks.Shell;
 
 internal class Workspace : Conductor<IPage>, IWorkspaceInternal
 {
-  public List<CommandItem> TmpMenuItems { get; set; }
+  public List<CommandItem> TmpMenuItems { get; set; } // todo 123
 
 
   public EventHandlerCollection<IPage, object> BedChangedEvent { get; } = new EventHandlerCollection<IPage, object>();
@@ -321,7 +323,8 @@ internal class Workspace : Conductor<IPage>, IWorkspaceInternal
       menuItems.Add(new CommandItem
       {
         DisplayName = "Move to new Window",
-        Command = new SimpleCommand(p => { Infr.Shell.ToggleWorkspaceHolder(holder); }),
+        Command = ReactiveCommand.CreateFromTask<IWorkspaceHolder>(ToggleWorkspaceHolder, null, RxApp.MainThreadScheduler),
+        CommandParameter = holder
       });
     }
     else
@@ -329,7 +332,8 @@ internal class Workspace : Conductor<IPage>, IWorkspaceInternal
       menuItems.Add(new CommandItem
       {
         DisplayName = "Move to TabItem",
-        Command = new SimpleCommand(p => { Infr.Shell.ToggleWorkspaceHolder(holder); }),
+        Command = ReactiveCommand.CreateFromTask<IWorkspaceHolder>(ToggleWorkspaceHolder, null, RxApp.MainThreadScheduler),
+        CommandParameter = holder
       });
     }
 
@@ -337,6 +341,10 @@ internal class Workspace : Conductor<IPage>, IWorkspaceInternal
     NotifyOfPropertyChange(()=>TmpMenuItems);
   }
 
+  private async Task ToggleWorkspaceHolder(IWorkspaceHolder holder)
+  {
+    await Infr.Shell.ToggleWorkspaceHolder(holder);
+  }
 
   // Вызывается только при смене ActiveItem
   protected override async Task ChangeActiveItemAsync(IPage newItem, bool closePrevious, CancellationToken cancellationToken)

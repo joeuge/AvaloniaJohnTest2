@@ -144,7 +144,7 @@ namespace Iface.Utils.Avalonia
     public static Visual GetRoot(Visual element)
     {
       /*
-      var visualRoot = element.VisualRoot;
+      var visualRoot = element.GetVisualRoot();
       if (visualRoot != null)
       {
         return visualRoot;

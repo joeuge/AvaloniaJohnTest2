@@ -1,3 +1,4 @@
+using AppNs.Interfaces;
 using Avalonia.Controls;
 using Avalonia.Media;
 
@@ -23,6 +24,9 @@ namespace AppNs.UiContent.Dialogs
     public override void Render(DrawingContext context)
     {
       base.Render(context);
+
+      if (CoreDefaults.ProblemWithFocus)
+        return;
 
       Value.Focus();
       if (!string.IsNullOrEmpty(Value.Text))

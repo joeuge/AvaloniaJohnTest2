@@ -128,7 +128,7 @@ public partial class WindowModalService : IGlobalModalService, IDialogServiceInt
     //---------------------------
     //window.Header = autoModel;
     //---------------------------
-    //dialogProxy.DialogAutoModel = autoModel; // страховка от GC
+    dialogProxy.DialogAutoModel = autoModel; // страховка от GC
 
     if (false)
     {

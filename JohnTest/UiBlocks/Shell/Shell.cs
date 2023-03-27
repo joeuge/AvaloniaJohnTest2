@@ -151,6 +151,9 @@ public class Shell : Screen, IShellInternal
 
   protected override async Task OnDeactivateAsync(bool close, CancellationToken cancellationToken) // Screen override
   {
+    if (CoreDefaults.ProblemWithExit)
+      return;
+
     await ((IDeactivate)_tabContainer).DeactivateAsync(close, cancellationToken);
     await ((IDeactivate)_winContainer).DeactivateAsync(close, cancellationToken);
     //------------------

@@ -819,7 +819,10 @@ public class Infrastructure : PropertyChangedBase, IInfrastructureInternal
       context.ContainerItems.Add(new CommandItem
       {
         DisplayName = "Move to new Window",
-        Command = new SimpleCommand(p => { Shell.ToggleWorkspaceHolder(workspaceHolder); }),
+        Command = new SimpleCommand(async p =>
+        {
+          await Shell.ToggleWorkspaceHolder(workspaceHolder);
+        }),
       });
     }
 
@@ -828,7 +831,10 @@ public class Infrastructure : PropertyChangedBase, IInfrastructureInternal
       context.ContainerItems.Add(new CommandItem
       {
         DisplayName = "Move to TabItem",
-        Command = new SimpleCommand(p => { Shell.ToggleWorkspaceHolder(workspaceHolder); }),
+        Command = new SimpleCommand(async p =>
+        {
+          await Shell.ToggleWorkspaceHolder(workspaceHolder);
+        }),
       });
     }
 

@@ -5,6 +5,8 @@ namespace AppNs.Interfaces;
 public static class CoreDefaults
 {
   public const ResizeMode DialogResizeMode = ResizeMode.CanResize;
+  public const bool ProblemWithFocus = true;
+  public const bool ProblemWithExit = true;
 }
 
 
